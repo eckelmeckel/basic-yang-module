@@ -14,28 +14,28 @@
 <meta content="Tom Laffey" name="author">
 <meta content="Guy C. Fedorkow" name="author">
 <meta content="
-       This document defines a YANG RPC and a minimal datastore required to retrieve attestation evidence about integrity measurements from a device following the operational context defined in TPM-based Network Device Remote Integrity Verification. Complementary measurement logs are also provided by the YANG RPC originating from one or more roots of trust of measurement. The module defined requires at least one TPM 1.2 or TPM 2.0 and corresponding Trusted Software Stack included in the device components of the composite device the YANG server is running on. 
+       This document defines a YANG RPC and a small number of configuration node required to retrieve attestation evidence about integrity measurements from a device following the operational context defined in TPM-based Network Device Remote Integrity Verification. Complementary measurement logs are also provided by the YANG RPC originating from one or more roots of trust of measurement. The module defined requires at least one TPM 1.2 or TPM 2.0 and corresponding Trusted Software Stack included in the device components of the composite device the YANG server is running on. 
     " name="description">
-<meta content="xml2rfc 3.5.0" name="generator">
+<meta content="xml2rfc 3.6.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-rats-yang-tpm-charra-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.5.0
-    Python 3.8.5
+  xml2rfc 3.6.0
+    Python 3.8.8
     appdirs 1.4.4
     ConfigArgParse 1.2.3
     google-i18n-address 2.4.0
     html5lib 1.1
-    intervaltree 3.0.2
+    intervaltree 3.1.0
     Jinja2 2.11.2
     kitchen 1.2.6
-    lxml 4.5.0
-    pycountry 19.8.18
-    pyflakes 2.1.1
-    PyYAML 5.3.1
-    requests 2.22.0
-    setuptools 45.2.0
-    six 1.14.0
+    lxml 4.6.2
+    pycountry 20.7.3
+    pyflakes 2.2.0
+    PyYAML 5.4.1
+    requests 2.25.1
+    setuptools 51.3.3
+    six 1.15.0
 -->
 <link href="draft-ietf-rats-yang-tpm-charra.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -825,11 +825,11 @@ address div.right {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">YANG-CHARRA for TPMs</td>
-<td class="right">January 2021</td>
+<td class="right">March 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 8 July 2021</td>
+<td class="center">Expires 26 September 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -842,12 +842,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-rats-yang-tpm-charra-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-01-04" class="published">4 January 2021</time>
+<time datetime="2021-03-25" class="published">25 March 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-07-08">8 July 2021</time></dd>
+<dd class="expires"><time datetime="2021-09-26">26 September 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -888,7 +888,7 @@ address div.right {
 <h1 id="title">A YANG Data Model for Challenge-Response-based Remote Attestation Procedures using TPMs</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines a YANG RPC and a minimal datastore required to retrieve attestation evidence about integrity measurements from a device following the operational context defined in TPM-based Network Device Remote Integrity Verification. Complementary measurement logs are also provided by the YANG RPC originating from one or more roots of trust of measurement. The module defined requires at least one TPM 1.2 or TPM 2.0 and corresponding Trusted Software Stack included in the device components of the composite device the YANG server is running on.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document defines a YANG RPC and a small number of configuration node required to retrieve attestation evidence about integrity measurements from a device following the operational context defined in TPM-based Network Device Remote Integrity Verification. Complementary measurement logs are also provided by the YANG RPC originating from one or more roots of trust of measurement. The module defined requires at least one TPM 1.2 or TPM 2.0 and corresponding Trusted Software Stack included in the device components of the composite device the YANG server is running on.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note" id="section-note.1">
       <h2 id="name-note-to-readers">
@@ -919,7 +919,7 @@ address div.right {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 July 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 September 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -947,56 +947,56 @@ address div.right {
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.1">
-            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.1.2.1">
-                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-notation" class="xref">Requirements notation</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+<nav class="toc"><ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-notation" class="xref">Requirements notation</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-the-yang-module-for-basic-r" class="xref">The YANG Module for Basic Remote Attestation Procedures</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-yang-modules" class="xref">YANG Modules</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.2.2.1.2.1">
-                    <p id="section-toc.1-1.2.2.1.2.1.1" class="keepWithNext"><a href="#section-2.1.1" class="xref">2.1.1</a>.  <a href="#name-ietf-tpm-remote-attestation" class="xref">ietf-tpm-remote-attestation</a><a href="#section-toc.1-1.2.2.1.2.1.1" class="pilcrow">¶</a></p>
+          <li class="compact toc ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-the-yang-module-for-basic-r" class="xref">The YANG Module for Basic Remote Attestation Procedures</a></p>
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.2.2.1">
+                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-yang-modules" class="xref">YANG Modules</a></p>
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.2.2.1.2.1">
+                    <p id="section-toc.1-1.2.2.1.2.1.1" class="keepWithNext"><a href="#section-2.1.1" class="xref">2.1.1</a>.  <a href="#name-ietf-tpm-remote-attestation" class="xref">ietf-tpm-remote-attestation</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.1.2.2">
-                    <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="xref">2.1.2</a>.  <a href="#name-ietf-tcg-algs" class="xref">ietf-tcg-algs</a><a href="#section-toc.1-1.2.2.1.2.2.1" class="pilcrow">¶</a></p>
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.2.2.1.2.2">
+                    <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="xref">2.1.2</a>.  <a href="#name-ietf-tcg-algs" class="xref">ietf-tcg-algs</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-iana-considerations" class="xref">IANA considerations</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+          <li class="compact toc ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-iana-considerations" class="xref">IANA considerations</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+          <li class="compact toc ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+          <li class="compact toc ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-change-log" class="xref">Change Log</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+          <li class="compact toc ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-change-log" class="xref">Change Log</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.7.2.1">
-                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+          <li class="compact toc ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a></p>
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+              <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+          <li class="compact toc ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1070,8 +1070,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <a href="#section-2.1.1.3.1" class="section-number selfRef">2.1.1.3.1. </a><a href="#name-tpm20-challenge-response-at" class="section-name selfRef">&lt;tpm20-challenge-response-attestation&gt;</a>
               </h6>
 <p id="section-2.1.1.3.1-1">This RPC allows a Verifier to request a quote of PCRs from a TPM2.0 compliant cryptoprocessor.  Where the feature &lt;TPMs&gt; is active, and one or more &lt;certificate-name&gt; is not provided, all TPM2.0 compliant cryptoprocessors will respond.   A YANG tree diagram of this RPC is as follows:<a href="#section-2.1.1.3.1-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-TREE" id="section-2.1.1.3.1-2">
-<pre>
+<div id="section-2.1.1.3.1-2">
+<pre class="sourcecode lang-TREE">
 +---x tpm20-challenge-response-attestation {taa:TPM20}?
    +---w input
    |  +---w tpm20-attestation-challenge
@@ -1150,8 +1150,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <a href="#section-2.1.1.4" class="section-number selfRef">2.1.1.4. </a><a href="#name-tpm12-challenge-response-at" class="section-name selfRef">&lt;tpm12-challenge-response-attestation&gt;</a>
             </h5>
 <p id="section-2.1.1.4-1">This RPC allows a Verifier to request a quote of PCRs from a TPM1.2 compliant cryptoprocessor.  Where the feature &lt;TPMs&gt; is active, and one or more &lt;certificate-name&gt; is not provided, all TPM1.2 compliant cryptoprocessors will respond.  A YANG tree diagram of this RPC is as follows:<a href="#section-2.1.1.4-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-TREE" id="section-2.1.1.4-2">
-<pre>
+<div id="section-2.1.1.4-2">
+<pre class="sourcecode lang-TREE">
 +---x tpm12-challenge-response-attestation {taa:TPM12}?
    +---w input
    |  +---w tpm12-attestation-challenge
@@ -1173,8 +1173,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <a href="#section-2.1.1.5" class="section-number selfRef">2.1.1.5. </a><a href="#name-log-retrieval" class="section-name selfRef">&lt;log-retrieval&gt;</a>
             </h5>
 <p id="section-2.1.1.5-1">This RPC allows a Verifier to acquire the evidence which was extended into specific PCRs.   A YANG tree diagram of this RPC is as follows:<a href="#section-2.1.1.5-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-TREE" id="section-2.1.1.5-2">
-<pre>
+<div id="section-2.1.1.5-2">
+<pre class="sourcecode lang-TREE">
 +---x log-retrieval
    +---w input
    |  +---w log-selector* []
@@ -1240,8 +1240,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <p id="section-2.1.1.6-1">This section provides a high level description of the data nodes containing the configuration and operational objects with the YANG model. For more details, please see the YANG model itself in <a href="#ref-ietf-tpm-remote-attestation" class="xref">Section 2.1.1.7</a>.<a href="#section-2.1.1.6-1" class="pilcrow">¶</a></p>
 <p id="section-2.1.1.6-2">container &lt;rats-support-structures&gt; - This houses the set of information relating to a device's TPM(s).<a href="#section-2.1.1.6-2" class="pilcrow">¶</a></p>
 <p id="section-2.1.1.6-3">container &lt;tpms&gt; - Provides configuration and operational details for each supported TPM, including the tpm-firmware-version, PCRs which may be quoted, certificates which are associated with that TPM, and the current operational status.  Of note is the certificates which are associated with that TPM.  As a certificate is associated with a single Attestation key, knowledge of the certificate allows a specific TPM to be identified.<a href="#section-2.1.1.6-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-TREE" id="section-2.1.1.6-4">
-<pre>
+<div id="section-2.1.1.6-4">
+<pre class="sourcecode lang-TREE">
 +--rw tpms
    +--rw tpm* [tpm-name]
       +--rw tpm-name                string
@@ -1265,8 +1265,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 </pre><a href="#section-2.1.1.6-4" class="pilcrow">¶</a>
 </div>
 <p id="section-2.1.1.6-5">container &lt;attester-supported-algos&gt; - Identifies which TCG algorithms are available for use the Attesting platform.  This allows an operator to limit algorithms available for use by RPCs to just a desired set from the universe of all allowed by TCG.<a href="#section-2.1.1.6-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-TREE" id="section-2.1.1.6-6">
-<pre>
+<div id="section-2.1.1.6-6">
+<pre class="sourcecode lang-TREE">
 +--rw attester-supported-algos
    +--rw tpm12-asymmetric-signing*   identityref {taa:TPM12}?
    +--rw tpm12-hash*                 identityref {taa:TPM12}?
@@ -1275,8 +1275,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 </pre><a href="#section-2.1.1.6-6" class="pilcrow">¶</a>
 </div>
 <p id="section-2.1.1.6-7">container &lt;compute-nodes&gt; - When there is more than one TPM supported, this container maintains the set of information related to the compute associated with a specific TPM.  This allows each specific TPM to identify on which &lt;compute-node&gt; it belongs.<a href="#section-2.1.1.6-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-TREE" id="section-2.1.1.6-8">
-<pre>
+<div id="section-2.1.1.6-8">
+<pre class="sourcecode lang-TREE">
 +--rw compute-nodes {tpm:TPMs}?
    +--ro compute-node* [node-id]
       +--ro node-id                string
@@ -1293,7 +1293,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <a href="#section-2.1.1.7" class="section-number selfRef">2.1.1.7. </a><a href="#name-yang-module" class="section-name selfRef">YANG Module</a>
             </h5>
 <div id="section-2.1.1.7-1">
-<pre class="sourcecode lang-YANG">&lt;CODE BEGINS&gt; file ietf-tpm-remote-attestation@2020-12-17.yang
+<pre class="sourcecode lang-YANG">
+&lt;CODE BEGINS&gt; file ietf-tpm-remote-attestation@2020-12-17.yang
 module ietf-tpm-remote-attestation {
   namespace "urn:ietf:params:xml:ns:yang:ietf-tpm-remote-attestation";
   prefix "tpm";
@@ -2403,8 +2404,8 @@ module ietf-tpm-remote-attestation {
     }
   }
 }
-
-&lt;CODE ENDS&gt;</pre><a href="#section-2.1.1.7-1" class="pilcrow">¶</a>
+&lt;CODE ENDS&gt;
+</pre><a href="#section-2.1.1.7-1" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -2441,7 +2442,8 @@ module ietf-tpm-remote-attestation {
 <a href="#section-2.1.2.3" class="section-number selfRef">2.1.2.3. </a><a href="#name-yang-module-2" class="section-name selfRef">YANG Module</a>
             </h5>
 <div id="section-2.1.2.3-1">
-<pre class="sourcecode lang-YANG">&lt;CODE BEGINS&gt; ietf-tcg-algs@2020-09-18.yang
+<pre class="sourcecode lang-YANG">
+&lt;CODE BEGINS&gt; ietf-tcg-algs@2020-09-18.yang
 module ietf-tcg-algs {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-tcg-algs";
@@ -3182,8 +3184,8 @@ module ietf-tcg-algs {
   }
 
 }
-
-&lt;CODE ENDS&gt;</pre><a href="#section-2.1.2.3-1" class="pilcrow">¶</a>
+&lt;CODE ENDS&gt;
+</pre><a href="#section-2.1.2.3-1" class="pilcrow">¶</a>
 </div>
 <p id="section-2.1.2.3-2">Note that not all cryptographic functions are required for use by ietf-tpm-remote-attestation.yang.  However the full definition of Table 3 of <span>[<a href="#TCG-Algos" class="xref">TCG-Algos</a>]</span> will allow use by additional YANG specifications.<a href="#section-2.1.2.3-2" class="pilcrow">¶</a></p>
 </section>
@@ -3314,19 +3316,19 @@ module ietf-tcg-algs {
 <dl class="references">
 <dt id="I-D.ietf-netconf-keystore">[I-D.ietf-netconf-keystore]</dt>
         <dd>
-<span class="refAuthor">Watsen, K.</span>, <span class="refTitle">"A YANG Data Model for a Keystore"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netconf-keystore-20</span>, <time datetime="2020-08-20" class="refDate">20 August 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-netconf-keystore-20.txt">http://www.ietf.org/internet-drafts/draft-ietf-netconf-keystore-20.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Watsen, K.</span>, <span class="refTitle">"A YANG Data Model for a Keystore"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netconf-keystore-21</span>, <time datetime="2021-02-10" class="refDate">10 February 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-netconf-keystore-21.txt">https://www.ietf.org/archive/id/draft-ietf-netconf-keystore-21.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-rats-architecture">[I-D.ietf-rats-architecture]</dt>
         <dd>
-<span class="refAuthor">Birkholz, H.</span><span class="refAuthor">, Thaler, D.</span><span class="refAuthor">, Richardson, M.</span><span class="refAuthor">, Smith, N.</span><span class="refAuthor">, and W. Pan</span>, <span class="refTitle">"Remote Attestation Procedures Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-architecture-08</span>, <time datetime="2020-12-08" class="refDate">8 December 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-rats-architecture-08.txt">http://www.ietf.org/internet-drafts/draft-ietf-rats-architecture-08.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Thaler, D.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Smith, N.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Remote Attestation Procedures Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-architecture-10</span>, <time datetime="2021-02-09" class="refDate">9 February 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-rats-architecture-10.txt">https://www.ietf.org/archive/id/draft-ietf-rats-architecture-10.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-rats-reference-interaction-models">[I-D.ietf-rats-reference-interaction-models]</dt>
         <dd>
-<span class="refAuthor">Birkholz, H.</span><span class="refAuthor">, Eckel, M.</span><span class="refAuthor">, Newton, C.</span><span class="refAuthor">, and L. Chen</span>, <span class="refTitle">"Reference Interaction Models for Remote Attestation Procedures"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-reference-interaction-models-01</span>, <time datetime="2020-10-23" class="refDate">23 October 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-rats-reference-interaction-models-01.txt">http://www.ietf.org/internet-drafts/draft-ietf-rats-reference-interaction-models-01.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Eckel, M.</span>, <span class="refAuthor">Newton, C.</span>, and <span class="refAuthor">L. Chen</span>, <span class="refTitle">"Reference Interaction Models for Remote Attestation Procedures"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-reference-interaction-models-01</span>, <time datetime="2020-10-23" class="refDate">23 October 2020</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-rats-reference-interaction-models-01.txt">https://www.ietf.org/archive/id/draft-ietf-rats-reference-interaction-models-01.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-rats-tpm-based-network-device-attest">[I-D.ietf-rats-tpm-based-network-device-attest]</dt>
         <dd>
-<span class="refAuthor">Fedorkow, G.</span><span class="refAuthor">, Voit, E.</span><span class="refAuthor">, and J. Fitzgerald-McKay</span>, <span class="refTitle">"TPM-based Network Device Remote Integrity Verification"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-tpm-based-network-device-attest-06</span>, <time datetime="2020-12-07" class="refDate">7 December 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-rats-tpm-based-network-device-attest-06.txt">http://www.ietf.org/internet-drafts/draft-ietf-rats-tpm-based-network-device-attest-06.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Fedorkow, G.</span>, <span class="refAuthor">Voit, E.</span>, and <span class="refAuthor">J. Fitzgerald-McKay</span>, <span class="refTitle">"TPM-based Network Device Remote Integrity Verification"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-tpm-based-network-device-attest-06</span>, <time datetime="2020-12-07" class="refDate">7 December 2020</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-rats-tpm-based-network-device-attest-06.txt">https://www.ietf.org/archive/id/draft-ietf-rats-tpm-based-network-device-attest-06.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -3342,7 +3344,7 @@ module ietf-tcg-algs {
 <dd class="break"></dd>
 <dt id="RFC8348">[RFC8348]</dt>
         <dd>
-<span class="refAuthor">Bierman, A.</span><span class="refAuthor">, Bjorklund, M.</span><span class="refAuthor">, Dong, J.</span><span class="refAuthor">, and D. Romascanu</span>, <span class="refTitle">"A YANG Data Model for Hardware Management"</span>, <span class="seriesInfo">RFC 8348</span>, <span class="seriesInfo">DOI 10.17487/RFC8348</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8348">https://www.rfc-editor.org/info/rfc8348</a>&gt;</span>. </dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, <span class="refAuthor">Dong, J.</span>, and <span class="refAuthor">D. Romascanu</span>, <span class="refTitle">"A YANG Data Model for Hardware Management"</span>, <span class="seriesInfo">RFC 8348</span>, <span class="seriesInfo">DOI 10.17487/RFC8348</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8348">https://www.rfc-editor.org/info/rfc8348</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TCG-Algos">[TCG-Algos]</dt>
         <dd>
@@ -3365,7 +3367,7 @@ module ietf-tcg-algs {
 <dl class="references">
 <dt id="RFC6241">[RFC6241]</dt>
         <dd>
-<span class="refAuthor">Enns, R., Ed.</span><span class="refAuthor">, Bjorklund, M., Ed.</span><span class="refAuthor">, Schoenwaelder, J., Ed.</span><span class="refAuthor">, and A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6241">https://www.rfc-editor.org/info/rfc6241</a>&gt;</span>. </dd>
+<span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6241">https://www.rfc-editor.org/info/rfc6241</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6242">[RFC6242]</dt>
         <dd>
@@ -3373,7 +3375,7 @@ module ietf-tcg-algs {
 <dd class="break"></dd>
 <dt id="RFC8040">[RFC8040]</dt>
         <dd>
-<span class="refAuthor">Bierman, A.</span><span class="refAuthor">, Bjorklund, M.</span><span class="refAuthor">, and K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8040">https://www.rfc-editor.org/info/rfc8040</a>&gt;</span>. </dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8040">https://www.rfc-editor.org/info/rfc8040</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8446">[RFC8446]</dt>
       <dd>
