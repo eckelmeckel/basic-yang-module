@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-04T13:27:16.311572+00:00",
+  "timestamp": "2021-03-25T14:57:33.283878+00:00",
   "repo": "ietf-rats-wg/basic-yang-module",
   "labels": [
     {
@@ -110,15 +110,15 @@
       "id": "MDU6SXNzdWU2MzEwOTIxMTY=",
       "title": "Multiple issues",
       "url": "https://github.com/ietf-rats-wg/basic-yang-module/issues/6",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ericvoit",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "There are several issues with the current YANG model.  I am grouping them as one as I have a single YANG model pull request to cover all of these.  \r\n\r\nThe issues I believe need to be addressed include:\r\n\r\n(1) PCR numbers should be their own type, not a UINT8.  PCRs should be limited to [0..31]\r\n\r\n(2) We should use ENUMs instead of strings for TCG and IETF crypto algorithm types.  Strings allow lots of errors to be introduced which we can protect using a larger, more detailed ENUM construct.\r\n\r\n(3) Most devices do not have multiple line cards.  Because of that, we should not have nested keys of [node id] [tpm name].  This adds unnecessary complexity for the vast majority of users.  Instead the tpm should have a mandatory leafref back to node-id when compute-nodes is not null.\r\n\r\n(4) The YANG doctors will not let us have a TPM-Name of \"ALL\".  Instead of \"ALL\" we should be able to assume that an RPC means all hardware based TPMs if a specific TPM is not named in the RPC.   Note that this means that we *should not* use TPM-name as a KEY in any RPC. \r\n\r\n(5) We should add leaf for a unique TPM-Path.  It might be claimed this is irrelevant with the existing key structure, but\r\n- likely the YANG model itself will learn the TPM this way after boot.\r\n- You could add/remove/migrate new virtual TPMs, more easily only re-allocating an *existing* path when the new vTPM is activated.\r\n\r\n(6) We should have optional YANG features for TPM1.2 and TPM2.0 so that RPCs are not exposed when there are no such TPMs of that type are supported.\r\n\r\n(7) We should great new grouping for the log algorithm types.  These groupings can be reused for a Telemetry/Subscription feed of individual log entries.  Other log types like those proposed for \"netequip boot\" by Bin Cao can then be merged.\r\n",
       "createdAt": "2020-06-04T19:31:59Z",
-      "updatedAt": "2020-09-30T09:13:01Z",
-      "closedAt": null,
+      "updatedAt": "2021-01-04T15:21:09Z",
+      "closedAt": "2021-01-04T15:21:09Z",
       "comments": [
         {
           "author": "ericvoit",
@@ -209,15 +209,15 @@
       "id": "MDU6SXNzdWU3NTk1OTI5NjE=",
       "title": "Simplify TPM1.2 Quote structures.   Is Quote1 needed?",
       "url": "https://github.com/ietf-rats-wg/basic-yang-module/issues/25",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ericvoit",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Details are in Pull Request 24.",
       "createdAt": "2020-12-08T16:32:30Z",
-      "updatedAt": "2020-12-16T16:27:15Z",
-      "closedAt": null,
+      "updatedAt": "2021-01-04T15:20:48Z",
+      "closedAt": "2021-01-04T15:20:48Z",
       "comments": [
         {
           "author": "henkbirkholz",
@@ -1459,6 +1459,87 @@
           ]
         }
       ]
+    },
+    {
+      "number": 32,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTc2NjMwMTUy",
+      "title": "Update draft-ietf-rats-yang-tpm-charra.md",
+      "url": "https://github.com/ietf-rats-wg/basic-yang-module/pull/32",
+      "state": "MERGED",
+      "author": "ericvoit",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Per Jeurgen's comment that we are not building a new datastore (type)",
+      "createdAt": "2021-02-19T18:14:51Z",
+      "updatedAt": "2021-03-25T14:56:59Z",
+      "baseRepository": "ietf-rats-wg/basic-yang-module",
+      "baseRefName": "master",
+      "baseRefOid": "0f5e3ed19549a9c69c78e905c56912acadecc622",
+      "headRepository": "ericvoit/basic-yang-module",
+      "headRefName": "patch-24",
+      "headRefOid": "37f2ef112c90c179e0480436cec7f34f9546e2d1",
+      "closedAt": "2021-03-25T14:56:59Z",
+      "mergedAt": "2021-03-25T14:56:59Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "82807867806f4294ef83fe7d0abee8ddc87a10ea"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTk0Njg3NTM4",
+          "commit": {
+            "abbreviatedOid": "37f2ef1"
+          },
+          "author": "William-PanWei",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-02-20T01:49:49Z",
+          "updatedAt": "2021-02-20T01:49:49Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIxMjE4NDk2",
+          "commit": {
+            "abbreviatedOid": "37f2ef1"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-03-25T14:56:50Z",
+          "updatedAt": "2021-03-25T14:56:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "id": "MDExOlB1bGxSZXF1ZXN0NjAwNzk3MDUw",
+      "title": "Update ietf-tpm-remote-attestation.yang",
+      "url": "https://github.com/ietf-rats-wg/basic-yang-module/pull/33",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Updated descriptions to include links to references.  Fixed duplicated header",
+      "createdAt": "2021-03-25T14:38:15Z",
+      "updatedAt": "2021-03-25T14:47:17Z",
+      "baseRepository": "ietf-rats-wg/basic-yang-module",
+      "baseRefName": "master",
+      "baseRefOid": "0f5e3ed19549a9c69c78e905c56912acadecc622",
+      "headRepository": "ericvoit/basic-yang-module",
+      "headRefName": "patch-25",
+      "headRefOid": "77a82a726665639e2a20fb44fd88793125999002",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
