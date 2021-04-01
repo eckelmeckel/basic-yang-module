@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-25T14:57:33.283878+00:00",
+  "timestamp": "2021-04-01T07:27:10.766273+00:00",
   "repo": "ietf-rats-wg/basic-yang-module",
   "labels": [
     {
@@ -1520,26 +1520,42 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NjAwNzk3MDUw",
       "title": "Update ietf-tpm-remote-attestation.yang",
       "url": "https://github.com/ietf-rats-wg/basic-yang-module/pull/33",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "ericvoit",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Updated descriptions to include links to references.  Fixed duplicated header",
       "createdAt": "2021-03-25T14:38:15Z",
-      "updatedAt": "2021-03-25T14:47:17Z",
+      "updatedAt": "2021-03-25T15:38:06Z",
       "baseRepository": "ietf-rats-wg/basic-yang-module",
       "baseRefName": "master",
       "baseRefOid": "0f5e3ed19549a9c69c78e905c56912acadecc622",
       "headRepository": "ericvoit/basic-yang-module",
       "headRefName": "patch-25",
       "headRefOid": "77a82a726665639e2a20fb44fd88793125999002",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-03-25T15:38:06Z",
+      "mergedAt": "2021-03-25T15:38:06Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "394d9aaffc92e7819ebdd098b0808a3d7a1211c2"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIxMjYxMDk5",
+          "commit": {
+            "abbreviatedOid": "77a82a7"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "This is an approve with comment.\r\n\r\nThe feature statements added include references to the corresponding log formats. There is no reference for netequip_boot. Either we fix this by including an appropriate reference to something here, too, or at the very least create an appendix that illustrates the context/format.",
+          "createdAt": "2021-03-25T15:30:58Z",
+          "updatedAt": "2021-03-25T15:30:58Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
