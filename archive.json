@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-04-01T07:27:10.766273+00:00",
+  "timestamp": "2021-04-14T12:43:39.073785+00:00",
   "repo": "ietf-rats-wg/basic-yang-module",
   "labels": [
     {
@@ -227,6 +227,22 @@
           "updatedAt": "2020-12-16T16:27:15Z"
         }
       ]
+    },
+    {
+      "number": 34,
+      "id": "MDU6SXNzdWU4NTU2MDkxMDQ=",
+      "title": "ima & neteq logs effectively both use ima_event format, but with different scope",
+      "url": "https://github.com/ietf-rats-wg/basic-yang-module/issues/34",
+      "state": "OPEN",
+      "author": "henkbirkholz",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "This issues tries to capture the remaining issue about the difference between the log features \"ima\" and \"netequip_boot\":\r\n\r\nThe difference between the two log types is the scope of events represented in the most expressive way possible. While ima changes the formats during layered attestation ending up using the \"richest format\" when the kernel becomes the Attesting Environment, netequip_boot uses the \"rich kernel format\" from the very start.\r\nNeteq therefore can reuse the ima-event grouping and can use \"https://www.trustedcomputinggroup.org/wp-content/uploads/TCG_IWG_CEL_v1_r0p30_13feb2021.pdf  Section 4.3\" as the reference in \"feature netequip_boot\". But it seems to me that it somehow still should be its own feature, as there is a difference in the semantics how the format in that grouping is used.\r\n\r\nHere I am trying to capture what I think of as the most straight forward options right now:\r\n\r\nShould a \"feature driven\" optional statement be added to \"ima-event\" that acts as a flag that exists based on the netequip_boot feature (which I think would be more verbose where logs are already verbose) and ima and netequip_boot feature are merged into ima?\r\n\r\nor\r\n\r\nShould netequip_boot feature remain a separate statement that also uses ima-event, but has the extended scope of ima expressiveness described in its feature description?\r\n\r\nPlease add obvious options that elude me right now.",
+      "createdAt": "2021-04-12T06:39:49Z",
+      "updatedAt": "2021-04-12T06:39:49Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -1553,6 +1569,88 @@
           "body": "This is an approve with comment.\r\n\r\nThe feature statements added include references to the corresponding log formats. There is no reference for netequip_boot. Either we fix this by including an appropriate reference to something here, too, or at the very least create an appendix that illustrates the context/format.",
           "createdAt": "2021-03-25T15:30:58Z",
           "updatedAt": "2021-03-25T15:30:58Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "MDExOlB1bGxSZXF1ZXN0NjE0NzU1ODg5",
+      "title": "Update draft-ietf-rats-yang-tpm-charra.md",
+      "url": "https://github.com/ietf-rats-wg/basic-yang-module/pull/35",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "yang detritus",
+      "createdAt": "2021-04-13T20:55:16Z",
+      "updatedAt": "2021-04-14T12:43:34Z",
+      "baseRepository": "ietf-rats-wg/basic-yang-module",
+      "baseRefName": "master",
+      "baseRefOid": "1fbbf745e8cc609aba6e1ecc723655b9d39dbc2a",
+      "headRepository": "ericvoit/basic-yang-module",
+      "headRefName": "patch-26",
+      "headRefOid": "893243fa1132bb72c353f1dc763a2faa95f71c77",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjM1NTcyMTI5",
+          "commit": {
+            "abbreviatedOid": "893243f"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-04-14T12:43:34Z",
+          "updatedAt": "2021-04-14T12:43:34Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "id": "MDExOlB1bGxSZXF1ZXN0NjE0NzU2ODI4",
+      "title": "Update ietf-tpm-remote-attestation.yang",
+      "url": "https://github.com/ietf-rats-wg/basic-yang-module/pull/36",
+      "state": "MERGED",
+      "author": "ericvoit",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "yang detritus",
+      "createdAt": "2021-04-13T20:56:50Z",
+      "updatedAt": "2021-04-14T12:43:19Z",
+      "baseRepository": "ietf-rats-wg/basic-yang-module",
+      "baseRefName": "master",
+      "baseRefOid": "1fbbf745e8cc609aba6e1ecc723655b9d39dbc2a",
+      "headRepository": "ericvoit/basic-yang-module",
+      "headRefName": "patch-27",
+      "headRefOid": "44f0a8ef4c87494779e5859264009f60b8e09d37",
+      "closedAt": "2021-04-14T12:43:19Z",
+      "mergedAt": "2021-04-14T12:43:19Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "23c5479f1213a5f95dc95774c0a7cb9d5a4bbdba"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjM1NTcxNzk1",
+          "commit": {
+            "abbreviatedOid": "44f0a8e"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-04-14T12:43:14Z",
+          "updatedAt": "2021-04-14T12:43:14Z",
           "comments": []
         }
       ]
