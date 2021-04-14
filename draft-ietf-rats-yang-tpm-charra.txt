@@ -475,7 +475,7 @@ Internet-Draft            YANG-CHARRA for TPMs                April 2021
 
 2.1.1.7.  YANG Module
 
-   <CODE BEGINS> file ietf-tpm-remote-attestation@2020-12-17.yang
+   <CODE BEGINS> file "ietf-tpm-remote-attestation@2021-03-16.yang"
    module ietf-tpm-remote-attestation {
      namespace "urn:ietf:params:xml:ns:yang:ietf-tpm-remote-attestation";
      prefix "tpm";
@@ -1802,7 +1802,7 @@ Internet-Draft            YANG-CHARRA for TPMs                April 2021
 
 2.1.2.3.  YANG Module
 
-   <CODE BEGINS> ietf-tcg-algs@2020-09-18.yang
+   <CODE BEGINS> file "ietf-tcg-algs@2020-09-18.yang"
    module ietf-tcg-algs {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-tcg-algs";
